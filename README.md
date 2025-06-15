@@ -2,9 +2,6 @@
 Uses ```sin```, ```cos``` and other functions to change vertecies positions to make it look wobbly and distorted when you move.\
 May look like a messy AI-generated video in some cases.
 
-## Video
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/QrnDM63jHdI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
 ## Technicl information
 ### Requirments
 - Minecraft version: 1.21.6
