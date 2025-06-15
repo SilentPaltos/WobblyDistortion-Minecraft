@@ -12,7 +12,7 @@ May look like a messy AI-generated video in some cases.
 Shader isn't perfect and has some issues with non-full blocks. But I made it for fun. Just started learning shaders and wanted to do something interesting. May be I'll fix issues later.
 
 ### Config
-You can configure shader in the ```assets/minecraft/include/distortion.glsl``` file\
+You can configure shader in the ```assets/minecraft/shaders/include/distortion.glsl``` file\
 Config lines:
 ```
 // Config
