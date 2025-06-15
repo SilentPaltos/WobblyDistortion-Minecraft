@@ -1,6 +1,6 @@
 ## Wobbley World
-Uses sin, cos and other functions to change vertecies positions to make it look wobbly when you move.\
-Might look like a messy AI-generated video in some cases.
+Uses ```sin```, ```cos``` and other functions to change vertecies positions to make it look wobbly when you move.\
+May look like a messy AI-generated video in some cases.
 
 ## Video
 
