@@ -1,0 +1,20 @@
+{
+  "pack": {
+    "pack_format": 55,
+    "supported_formats": [ 55, 71 ],
+    "description": [
+      { 
+        "text": "Wobble-Wobble ",
+        "color": "gold"
+      },
+      {
+        "text": "(1.21.6)\n",
+        "color": "green"
+      },
+      {
+        "text": "by SilentPaltos",
+        "color": "gray"
+      }
+    ]
+  }
+}
