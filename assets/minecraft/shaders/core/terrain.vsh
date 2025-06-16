@@ -25,12 +25,7 @@ vec4 minecraft_sample_lightmap(sampler2D lightMap, ivec2 uv) {
 void main() {
     vec3 pos = Position + ModelOffset;
     pos = distort(pos);
-    // DO NOT DELETE YET
-    // RGB axis colored matrix-grid-world with cross-cursor over the whole world under the camera
-    // vec4 Color = abs((vec4(ModelOffset, Color.a) / vec4(pos, Color.a)) / vec4(Position, Color.a));
-    // pos += Color.rgb;
     gl_Position = ProjMat * ModelViewMat * vec4(pos, 1.0);
-    //gl_Position *= abs(gl_Position);
     sphericalVertexDistance = fog_spherical_distance(pos);
     cylindricalVertexDistance = fog_cylindrical_distance(pos);
     vertexColor = Color * minecraft_sample_lightmap(Sampler2, UV2);
