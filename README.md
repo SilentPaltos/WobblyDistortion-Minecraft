@@ -1,5 +1,5 @@
 ## WobblyDistortion
-Uses ```sin```, ```cos``` and other functions to change vertecies positions to make it look wobbly and distorted when you move.\
+Uses ```sin```, ```cos``` and other functions to change verteces positions to make it look wobbly and distorted when you move.\
 May look like a fuzzy AI-generated video in some cases.
 
 ## Technicl information
