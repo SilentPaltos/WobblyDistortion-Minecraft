@@ -1,33 +1,35 @@
-#version 150
+#version 330
 
-// Config
-vec2 SMOOTH_RANGE = vec2(2.0, 10.0);
-float MINIMAL_DISTORTION_MULT = 0.25;
-float SMOOTH_DISTORTION_MULT = 0.5;
+#moj_import <minecraft:globals.glsl>
+#moj_import <minecraft:distortion_config.glsl>
+
 // DO NOT TOUCH
-vec3 pos_corrector = vec3(-1,-1,-1);
+#define pos_corrector vec3(-1, -1, -1);
 
-vec3 distorter(vec3 vector) {
-    vec3 sin_wave = sin(vector);
-    vec3 cos_wave = cos(vector);
-    return max(sin_wave, cos_wave) - min(sin_wave, cos_wave) + pos_corrector;
+vec3 distorter(vec3 v) {
+    float time = GameTime * GAME_TIME_SCALE;
+
+    float falloff = smoothstep(
+        DISTORTION_START_DISTANCE,
+        DISTORTION_START_DISTANCE + DISTORTION_SMOOTHING_DISTANCE,
+        length(v)
+    );
+
+    vec3 wave =
+        cos((v - time * sign(v)) * COS_FREQ) 
+        - sin((v - time * sign(v)) * SIN_FREQ);
+
+    vec3 magnitude = v * DISTORTION_MULTIPLIER * falloff;
+
+    magnitude = clamp(
+        magnitude,
+        vec3(-MAX_DISTORTION_MULTIPLIER),
+        vec3( MAX_DISTORTION_MULTIPLIER)
+    );
+
+    return magnitude * wave;
 }
 
-vec3 distort(vec3 vector) {
-    // Distorter
-    vec3 vector_distorter = distorter(vector);
-    float difference = distance(vector, vector_distorter);
-    // Distorter "smoothed"
-    if ( difference < SMOOTH_RANGE[0] ) {
-        vector_distorter *= MINIMAL_DISTORTION_MULT;
-    }
-    if ( (difference >= SMOOTH_RANGE[0]) && (difference <= SMOOTH_RANGE[1]) ) {
-        if ( SMOOTH_DISTORTION_MULT <= 1 ) {
-            vector_distorter *= ( SMOOTH_DISTORTION_MULT );
-        } else { 
-            vector_distorter /= ( SMOOTH_DISTORTION_MULT );
-            }
-    }
-    // Distrotion Result
-    return vector + vector_distorter;
+vec3 distort(vec3 v) {
+    return v + distorter(v);
 }

@@ -1,4 +1,4 @@
-#version 150
+#version 330
 
 #moj_import <minecraft:fog.glsl>
 #moj_import <minecraft:globals.glsl>
@@ -9,6 +9,7 @@
 in vec3 Position;
 in vec4 Color;
 in vec3 Normal;
+in float LineWidth;
 
 out float sphericalVertexDistance;
 out float cylindricalVertexDistance;
@@ -23,8 +24,7 @@ const mat4 VIEW_SCALE = mat4(
 );
 
 void main() {
-    vec3 pos = Position;
-    pos = distort(pos);
+    vec3 pos = distort(Position);
     vec4 linePosStart = ProjMat * VIEW_SCALE * ModelViewMat * vec4(pos, 1.0);
     vec4 linePosEnd = ProjMat * VIEW_SCALE * ModelViewMat * vec4(pos + Normal, 1.0);
 

@@ -1,22 +1,25 @@
 #version 330
 
 #moj_import <minecraft:fog.glsl>
-#moj_import <minecraft:projection.glsl>
 #moj_import <minecraft:dynamictransforms.glsl>
 #moj_import <minecraft:projection.glsl>
 #moj_import <minecraft:distortion.glsl>
 
 in vec3 Position;
+in vec4 Color;
+in ivec2 UV2;
 
-out vec4 texProj0;
+uniform sampler2D Sampler2;
+
 out float sphericalVertexDistance;
 out float cylindricalVertexDistance;
+out vec4 vertexColor;
 
 void main() {
     vec3 pos = distort(Position);
     gl_Position = ProjMat * ModelViewMat * vec4(pos, 1.0);
 
-    texProj0 = projection_from_position(gl_Position);
     sphericalVertexDistance = fog_spherical_distance(pos);
     cylindricalVertexDistance = fog_cylindrical_distance(pos);
+    vertexColor = Color * texelFetch(Sampler2, UV2 / 16, 0);
 }
