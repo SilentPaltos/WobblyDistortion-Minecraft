@@ -2,21 +2,20 @@
 Uses ```sin```, ```cos``` and other functions to change vertices positions to make it look wobbly and distorted when you move.\
 May look like a fuzzy AI-generated video in some cases.
 
-## Technicl information
-### Requirments
-- Minecraft version: 1.21.6
-- Graphics: Any(even Fast)
-- I don't know how it affects optimization so I can't give you any recommenadtions about hardware
-
-### Issues
-Shader isn't perfect and has some issues with non-full blocks. But I made it for fun. Just started learning shaders and wanted to do something interesting. May be I'll fix issues later.
+Minecraft version: 1.21.11+
 
 ### Config
-You can configure shader in the ```assets/minecraft/shaders/include/distortion.glsl``` file\
+You can configure shader in the ```assets/minecraft/shaders/include/distortion_config.glsl``` file\
 Config lines:
 ```
-// Config
-vec2 SMOOTH_RANGE = vec2(2.0, 10.0);
-float MINIMAL_DISTORTION_MULT = 0.25;
-float SMOOTH_DISTORTION_MULT = 0.5;
+// config
+#define               GAME_TIME_SCALE 5000.0 // How fast distortion of the world goes on its own
+#define         DISTORTION_MULTIPLIER 0.05 // Just basic multiplier for sin() and cos()
+#define     MAX_DISTORTION_MULTIPLIER 4.0 // How far can be offset vertex from original point (per axis)
+#define                      COS_FREQ 1.0 // cos() frequency
+#define                      SIN_FREQ 1.0 // sin() frequency
+#define     DISTORTION_START_DISTANCE 0.0 // how far from camera distortion starts
+#define DISTORTION_SMOOTHING_DISTANCE 5.0 // how far from camera distortion can reach its max value
 ```
+
+Below you'll see some presets, I wanted to add compatibility with respackopts... But couldn't handle
