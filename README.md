@@ -18,4 +18,4 @@ Config lines:
 #define DISTORTION_SMOOTHING_DISTANCE 5.0 // how far from camera distortion can reach its max value
 ```
 
-Below you'll see some presets, I wanted to add compatibility with respackopts... But couldn't handle
+Below you'll see some presets, I wanted to add compatibility with respackopts... But couldn't handle it
